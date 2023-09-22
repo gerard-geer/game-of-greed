@@ -1,0 +1,7 @@
+.gp-container {
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
