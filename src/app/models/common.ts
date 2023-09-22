@@ -30,3 +30,18 @@ export enum Direction {
   SW = 64,
   SE = 128
 }
+
+export function pickColor(value: number) {
+    switch(value) {
+        case 1: return "peru";
+        case 2: return "crimson";
+        case 3: return "green";
+        case 4: return "navy";
+        case 5: return "darkorchid";
+        case 6: return "gold";
+        case 7: return "salmon";
+        case 8: return "chartreuse";
+        case 9: return "aqua";
+        default: return "white";
+    }
+}

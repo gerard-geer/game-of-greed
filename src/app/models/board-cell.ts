@@ -1,4 +1,4 @@
-import { randomNumberRange } from './common'; 
+import { randomNumberRange, pickColor } from './common'; 
 
 export class BoardCell {
 
@@ -11,27 +11,12 @@ export class BoardCell {
     isConsumed: boolean;
 
     constructor() {
-    this.value = randomNumberRange(1,10);
-    this.color = this.pickColor(this.value);
-    this.isCursor = false;
-    this.isFading = false;
-    this.isHidden = false;
-    this.isConsumed = false;
-    }
-
-    pickColor(value: number) {
-    switch(value) {
-        case 1: return "peru";
-        case 2: return "crimson";
-        case 3: return "green";
-        case 4: return "navy";
-        case 5: return "darkorchid";
-        case 6: return "gold";
-        case 7: return "salmon";
-        case 8: return "chartreuse";
-        case 9: return "aqua";
-        default: return "white";
-    }
+        this.value = randomNumberRange(1,10);
+        this.color = pickColor(this.value);
+        this.isCursor = false;
+        this.isFading = false;
+        this.isHidden = false;
+        this.isConsumed = false;
     }
 
     setAsCursor() {
