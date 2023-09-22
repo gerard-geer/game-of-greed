@@ -1,0 +1,35 @@
+
+.inner-value {
+    display: flex;
+}
+
+.inner-value-fading {
+    display: flex;
+    animation: fadeout .5s infinite;
+}
+
+.inner-cursor {
+    border-width: 2px !important;
+    border-color: red !important;
+    animation: pulse .5s infinite;
+    animation-timing-function: ease-in-out !important;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: #fff;
+    }
+    100% {
+        background-color: #111;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1.0;
+    }
+
+    100% {
+        opacity: 0.0;
+    }
+}

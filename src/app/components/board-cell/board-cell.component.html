@@ -1,0 +1,20 @@
+<div class='inner-cell'>
+    <ng-container *ngIf="cell.isCursor; then cursorCell; else valueCell"></ng-container>
+    <ng-template #cursorCell>
+        <div class="inner-cursor">
+             .
+        </div>
+    </ng-template>
+    <ng-template #valueCell>
+        <div *ngIf="!cell.isHidden && !cell.isFading" 
+             class="inner-value"
+             [ngStyle]="{'color':cell.color}">
+             {{cell.value}}
+        </div>
+        <div *ngIf="!cell.isHidden && cell.isFading" 
+             class="inner-value-fading"
+             [ngStyle]="{'color':cell.color}">
+             {{cell.value}}
+        </div>
+    </ng-template>
+</div>

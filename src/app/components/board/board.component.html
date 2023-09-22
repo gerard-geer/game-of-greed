@@ -1,0 +1,8 @@
+<div class="board-container">
+    <div class="board-row" *ngFor="let row of board.cells">
+        <greed-cell
+            class="board-cell"
+            *ngFor="let cell of row"
+            [cell]="cell"
+        ></greed-cell>
+    </div>
