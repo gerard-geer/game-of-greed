@@ -1,0 +1,148 @@
+.ts-container {
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.ts-bg-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px;
+    font-size: 1.55vw;
+    animation: fade-in-background 3.0s;
+    animation-delay: 1.5s;
+    animation-fill-mode: both;  
+}
+
+.ts-bgnum {
+    padding: 2px;
+}
+
+.ts-menu-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-items: stretch;
+    align-items: flex-center;
+    justify-content: flex-start;
+    margin-top: 5vw;
+    background-color: rgba(0,0,0,.5);
+    backdrop-filter: blur(2px);
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 19px 38px, rgba(0, 0, 0, 0.33) 0px 15px 12px;
+
+}
+.ts-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 5px 20px 10px 20px;
+    
+}
+.ts-title-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10vw;
+    border-style: double;
+    border-color: #fff;
+    border-width: 4px;
+    border-radius: 1px;
+    font-family: monospace;
+}
+
+.ts-subscript {
+    font-size: .75rem;
+    text-align: left;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid #fff; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    letter-spacing: .05rem; /* Adjust as needed */
+    animation: 
+      typing 1.5s steps(24, end),
+      blink-caret .667s step-end infinite;
+  }
+
+  .ts-menu {
+    width: 100%;
+    display: flex;
+    flex: 1 1 0px;
+    justify-content: space-between;
+  }
+  .ts-button {
+    flex: 1 1 10px;
+    margin: 1rem;
+    border-style: double;
+    border-color: #fff;
+    border-width: 4px;
+    border-radius: 1px;
+    background-color: rgba(0,0,0,0);
+    color: #fff;
+    backdrop-filter: blur(2px);
+    animation: fade-in-background 1.5s;
+    animation-delay: 1.5s;
+    animation-fill-mode: both;  
+  }
+  .ts-button:hover {
+    border-style: solid;
+    font-weight: bolder;
+  }
+  .ts-button-text {
+    font-family: monospace;
+    font-size: .75rem;
+    text-align: left;
+    margin: .2rem;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    white-space: nowrap; /* Keeps the content on a single line */
+    letter-spacing: .05rem; /* Adjust as needed */
+    animation: typing-buttons 1.2s steps(24, end);
+    animation-fill-mode: both;  
+  }
+  #begin {
+    animation-delay: 2.0s;
+  }
+  #howtoplay {
+    animation-delay: 2.667s;
+  }
+  #closehelptext {
+    animation: none;
+    animation-delay: 0s;
+  }
+  #closehelp {
+    animation: none;
+    animation-delay: 0s;
+    margin: .3rem 0 0 0;
+  }
+  .ts-help {
+    font-family: monospace;
+    font-size: .75rem;
+    padding: .4rem 0 .4rem 0;
+    margin: 0 1rem 0 1rem;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 12rem; }
+  }
+   /* The typing effect */
+   @keyframes typing-buttons {
+    from { width: 0 }
+    to { width: 8rem; }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #fff; }
+  }
+
+  @keyframes fade-in-background {
+    0% { opacity: 0.0};
+    100% { opacity: 1.0};
+  }
