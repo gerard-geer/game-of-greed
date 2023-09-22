@@ -16,5 +16,10 @@
              [ngStyle]="{'color':cell.color}">
              {{cell.value}}
         </div>
+        <div *ngIf="cell.isHidden" 
+             class="inner-value-hidden"
+             [ngStyle]="{'color':cell.color}">
+             &
+        </div>
     </ng-template>
 </div>

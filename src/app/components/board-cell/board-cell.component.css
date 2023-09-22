@@ -5,7 +5,11 @@
 
 .inner-value-fading {
     display: flex;
-    animation: fadeout .5s infinite;
+    animation: fadeout .6s infinite;
+}
+.inner-value-hidden {
+    display: flex;
+    opacity: 0.0 !important;
 }
 
 .inner-cursor {
