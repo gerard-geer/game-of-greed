@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Board } from '../../models/board';
 
 @Component({
@@ -8,13 +8,12 @@ import { Board } from '../../models/board';
 })
 export class BoardComponent implements OnInit{
 
-  board: any;
+  @Input("board")board: any;
 
   constructor() {
   };
 
   ngOnInit() {
-    this.board = new Board(68,21);
   }
 
 }
