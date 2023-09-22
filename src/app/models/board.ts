@@ -1,16 +1,7 @@
-import { randomNumberRange, MoveValidity, MoveResult } from './common';
+import { randomNumberRange, MoveValidity, MoveResult, Direction } from './common';
 import { BoardCell } from './board-cell'; 
 
-export enum Direction {
-    N = 1,
-    S = 2,
-    W = 4,
-    E = 8,
-    NW = 16,
-    NE = 32,
-    SW = 64,
-    SE = 128
-}
+
 
 export class Board {
 
@@ -35,19 +26,15 @@ export class Board {
             }
             this.cells.push(row);
         }
-        console.log("NEW TABLE");
-        console.table(this.cells);
     
         // Pick a random position (x,y) less than (width,height) as our
         // starting cursor position.
-        this.cursorX = 12;randomNumberRange(0,width);
-        this.cursorY = 12;randomNumberRange(0,height);
+        this.cursorX = 0;randomNumberRange(0,width);
+        this.cursorY = 0;randomNumberRange(0,height);
     
         // Go to that cell and set as the cursor.
         console.log("Setting cursor to",this.cursorX,",",this.cursorY);
         this.cells[this.cursorY][this.cursorX].setAsCursor();
-
-        console.log(this.jogCursor(Direction.W));
     }
 
     checkMoveValidity(d: Direction) : MoveValidity {
@@ -58,17 +45,15 @@ export class Board {
 
         // Determine our unit direction vector.
         switch (d) {
-            case (Direction.N):  dx =  0; dy =  1; break;
-            case (Direction.S):  dx =  0; dy = -1; break;
+            case (Direction.N):  dx =  0; dy = -1; break;
+            case (Direction.S):  dx =  0; dy =  1; break;
             case (Direction.E):  dx =  1; dy =  0; break;
             case (Direction.W):  dx = -1; dy =  0; break;
-            case (Direction.NW): dx = -1; dy =  1; break;
-            case (Direction.NE): dx =  1; dy =  1; break;
-            case (Direction.SW): dx = -1; dy = -1; break;
-            case (Direction.SE): dx =  1; dy = -1; break;
+            case (Direction.NW): dx = -1; dy = -1; break;
+            case (Direction.NE): dx =  1; dy = -1; break;
+            case (Direction.SW): dx = -1; dy =  1; break;
+            case (Direction.SE): dx =  1; dy =  1; break;
         }
-
-        console.log("dx:",dx,"dy:",dy);
 
         // Sample in that direction to get our jog distance.
         dirSampleX = this.cursorX + dx;
@@ -90,7 +75,7 @@ export class Board {
         let endY = this.cursorY + dy * (dist);
         if ( endX < 0 || endX >= this.width
           || endY < 0 || endY >= this.height ) {
-            MoveValidity.INVALID_OOB;
+            return MoveValidity.INVALID_OOB;
         }
 
         // Now that we know if we jog, we won't fall off the edge of the board.
@@ -98,7 +83,7 @@ export class Board {
         for ( let i = 1; i < dist+1; ++i ) {
             let curX = this.cursorX+(i*dx);
             let curY = this.cursorY+(i*dy);
-            if ( this.cells[curY][curX].isConsumed ) MoveValidity.INVLAID_EMPTY_SPACE;
+            if ( this.cells[curY][curX].isConsumed ) return MoveValidity.INVALID_EMPTY_SPACE;
         }
 
         // If All that passes, we can do the move!
@@ -111,14 +96,14 @@ export class Board {
 
         // Determine our unit direction vector.
         switch (d) {
-            case (Direction.N):  dx =  0; dy =  1; break;
-            case (Direction.S):  dx =  0; dy = -1; break;
+            case (Direction.N):  dx =  0; dy = -1; break;
+            case (Direction.S):  dx =  0; dy =  1; break;
             case (Direction.E):  dx =  1; dy =  0; break;
             case (Direction.W):  dx = -1; dy =  0; break;
-            case (Direction.NW): dx = -1; dy =  1; break;
-            case (Direction.NE): dx =  1; dy =  1; break;
-            case (Direction.SW): dx = -1; dy = -1; break;
-            case (Direction.SE): dx =  1; dy = -1; break;
+            case (Direction.NW): dx = -1; dy = -1; break;
+            case (Direction.NE): dx =  1; dy = -1; break;
+            case (Direction.SW): dx = -1; dy =  1; break;
+            case (Direction.SE): dx =  1; dy =  1; break;
         }
 
         // Do move checks.
@@ -159,8 +144,5 @@ export class Board {
         this.cells[this.cursorY][this.cursorX].setAsCursor();
 
         return move;
-
-        
-
     }
 }

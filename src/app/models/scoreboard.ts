@@ -33,7 +33,7 @@ export class ScoreBoard {
      */
     constructor( board: Board ) {
         this.maxCount = board.width * board.height;
-        this.curCount = 0;
+        this.curCount = 1; // The cursor starts off taking one square.
         this.numMoves = 0;
         this.score = 0;
     }
