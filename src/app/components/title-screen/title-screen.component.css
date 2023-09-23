@@ -65,45 +65,39 @@
   }
 
   .ts-menu {
-    width: 100%;
     display: flex;
-    flex: 1 1 0px;
+    flex: 1 1 0;
+    flex-direction: row;
     justify-content: space-between;
+    padding: 0px 20px 5px 20px;
   }
   .ts-button {
-    flex: 1 1 10px;
+    justify-items: stretch;
+    align-items: stretch;
     margin: 1rem;
-    border-style: double;
-    border-color: #fff;
-    border-width: 4px;
-    border-radius: 1px;
-    background-color: rgba(0,0,0,0);
-    color: #fff;
-    backdrop-filter: blur(2px);
     animation: fade-in-background 1.5s;
     animation-delay: 1.5s;
     animation-fill-mode: both;  
   }
-  .ts-button:hover {
-    border-style: solid;
-    font-weight: bolder;
+  .fullwidth {
+    display: block;
+    width: 100%;
+    min-width: 100%;
   }
   .ts-button-text {
-    font-family: monospace;
-    font-size: .75rem;
-    text-align: left;
     margin: .2rem;
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     white-space: nowrap; /* Keeps the content on a single line */
     letter-spacing: .05rem; /* Adjust as needed */
     animation: typing-buttons 1.2s steps(24, end);
-    animation-fill-mode: both;  
+    animation-fill-mode: both;
+    animation-delay: 1.25s;
   }
   #begin {
-    animation-delay: 2.0s;
+    /* animation-delay: 2.0s; */
   }
   #howtoplay {
-    animation-delay: 2.667s;
+    /* animation-delay: 2.667s; */
   }
   #closehelptext {
     animation: none;
@@ -112,7 +106,6 @@
   #closehelp {
     animation: none;
     animation-delay: 0s;
-    margin: .3rem 0 0 0;
   }
   .ts-help {
     font-family: monospace;
@@ -123,6 +116,9 @@
     border-top-width: 1px;
     border-bottom-style: solid;
     border-bottom-width: 1px;
+  }
+  .ts-helptext {
+    margin-bottom: .1rem;
   }
   
   /* The typing effect */

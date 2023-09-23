@@ -14,21 +14,23 @@
             </div>
         </div>
         <div class="ts-menu">
-            <button class="ts-button"><div class="ts-button-text" id="begin">Begin</div></button>
-            <button class="ts-button" (click)="openHelpDialog()"><div class="ts-button-text" id="howtoplay">How to play</div></button>
+            <greed-button class="ts-button"><div class="ts-button-text" id="begin">Begin</div></greed-button>
+            <greed-button class="ts-button" (click)="toggleHelpDialog()"><div class="ts-button-text" id="howtoplay">How to play</div></greed-button>
         </div>
         <div *ngIf="showHelpDialog" class="ts-help">
-            How to play:
-            <div><b>W</b> -- Move north.</div>
-            <div><b>A</b> -- Move west.</div>
-            <div><b>S</b> -- Move south.</div>
-            <div><b>D</b> -- Move east.</div>
-            <div><b>Q</b> -- Move northwest.</div>
-            <div><b>E</b> -- Move northeast.</div>
-            <div><b>Z</b> -- Move southwest.</div>
-            <div><b>C</b> -- Move southeast.</div>
-
-            <button class="ts-button" id="closehelp" (click)="closeHelpDialog()"><div class="ts-button-text" id="closehelptext">Close</div></button>
+            <div class="ts-helptext">
+                How to play:
+                <div><b>W</b> -- Move north.</div>
+                <div><b>A</b> -- Move west.</div>
+                <div><b>S</b> -- Move south.</div>
+                <div><b>D</b> -- Move east.</div>
+                <div><b>Q</b> -- Move northwest.</div>
+                <div><b>E</b> -- Move northeast.</div>
+                <div><b>Z</b> -- Move southwest.</div>
+                <div><b>C</b> -- Move southeast.</div>
+            </div>
         </div>
+        <greed-button *ngIf="showHelpDialog" class="ts-button" id="closehelp" (click)="closeHelpDialog()"><div class="ts-button-text" id="closehelptext">Close</div></greed-button>
+
     </div>
 </div>

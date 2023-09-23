@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Board } from '../../models/board';
 import { pickColor, randomNumberRange } from '../../models/common';
 
@@ -10,6 +10,8 @@ import { pickColor, randomNumberRange } from '../../models/common';
 
 
 export class TitleScreenComponent implements OnInit{
+
+  @Output() onBeginGame = new EventEmitter<string>();
 
   bgNumbers: any;
   numBG = 1840;
@@ -48,8 +50,8 @@ export class TitleScreenComponent implements OnInit{
     this.bgNumbers[i+100].randomize();
   }
 
-  openHelpDialog() {
-    this.showHelpDialog = true;
+  toggleHelpDialog() {
+    this.showHelpDialog = !this.showHelpDialog;
   }
   closeHelpDialog() {
     this.showHelpDialog = false;
