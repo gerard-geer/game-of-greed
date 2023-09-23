@@ -8,6 +8,7 @@ import { BoardCellComponent } from './components/board-cell/board-cell.component
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { GreedPlayerComponent } from './components/greed-player/greed-player.component';
 import { TitleScreenComponent } from './components/title-screen/title-screen.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TitleScreenComponent } from './components/title-screen/title-screen.com
     BoardCellComponent,
     ScoreboardComponent,
     GreedPlayerComponent,
-    TitleScreenComponent
+    TitleScreenComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
