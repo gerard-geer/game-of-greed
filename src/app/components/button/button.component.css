@@ -1,0 +1,17 @@
+
+.greed-button {
+    border-style: double;
+    border-color: #fff;
+    border-width: 4px;
+    border-radius: 1px;
+    background-color: rgba(0,0,0,0);
+    color: #fff;
+    font-family: monospace;
+    font-size: .75rem;
+    text-align: left;
+    backdrop-filter: blur(2px);
+  }
+  .greed-button:hover {
+    border-style: solid;
+    font-weight: bolder;
+  }
