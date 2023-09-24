@@ -1,6 +1,6 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { GreedPlayer } from '../../models/greed-player';
-import { randomNumberRange, MoveValidity, MoveResult, Direction } from '../../models/common';
+import { randomNumberRange, MoveValidity, MoveResult, Direction, GameState } from '../../models/common';
 
 @Component({
   selector: 'greed-player',
@@ -10,13 +10,21 @@ import { randomNumberRange, MoveValidity, MoveResult, Direction } from '../../mo
 export class GreedPlayerComponent implements OnInit {
 
   player: any;
+  showQuitDialog: boolean = false;
+  fadeIn: boolean = true;
 
-  @Output() onGameOver = new EventEmitter<string>();
+  @Output() onStateChange = new EventEmitter<GameState>();
 
   constructor() {}
   
   ngOnInit() {
     this.player = new GreedPlayer();
+  }
+
+  startNewGame() {
+    console.log("starting new game");
+    this.fadeIn = true;
+    this.showQuitDialog = false;
     this.player.startNewGame();
   }
 
@@ -40,7 +48,20 @@ export class GreedPlayerComponent implements OnInit {
     this.player.attemptMove(dir);
 
     if ( this.player.gameover ) {
-      this.onGameOver.emit("game over");
+      this.triggerGameOver();
     }
+  }
+
+  toggleQuitDialog() {
+    this.showQuitDialog = !this.showQuitDialog;
+  }
+
+  triggerGameOver() {
+    this.player.gameover = true;
+    this.showQuitDialog = false;
+  }
+
+  emitStateChangeRequest() {
+    this.onStateChange.emit(GameState.MAIN_SCREEN);
   }
 }

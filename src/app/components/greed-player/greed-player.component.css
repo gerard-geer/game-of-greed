@@ -5,3 +5,84 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.fade-in-element {
+    animation: fade-in 1.0s;
+}
+.gp-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .2rem;
+    padding: .2rem 0 .2rem 0;
+    border-top-style: double;
+    border-top-width: 4px;
+    border-top-color: white;
+    border-bottom-style: double;
+    border-bottom-width: 4px;
+    border-bottom-color: white;
+}
+#quitButton{
+    text-align: right;
+}
+.gp-display-element {
+    flex: 1 1 0;
+}
+.gp-dialog-container {
+    font-family: monospace;
+    width: 99%;
+    height: 80%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.gp-dialog-wrapper {
+    padding: 10px 20px 10px 20px;
+    background-color: rgba(.2,.2,.2,.5);
+    backdrop-filter: blur(2px);
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 19px 38px, rgba(0, 0, 0, 0.33) 0px 15px 12px;
+}
+.gp-dialog {
+    padding: 10px 20px 10px 20px;
+    border-style: double;
+    border-color: #fff;
+    border-width: 4px;
+}
+.gp-dialog-title {
+    width: 100%;
+    text-align: center;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: white;
+    padding-bottom: .2rem;
+    margin-bottom: .2rem;
+}
+.gp-gameover-buttons {
+    margin-top: .5rem;
+    padding: .5rem 0 0 0;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex: 1 1 0;
+
+}
+.gp-quit-buttons {
+    margin-top: .5rem;
+    padding: .5rem 0 0 0;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex: 1 1 0;
+}
+
+@keyframes fade-in {
+    0% { opacity: 0.0};
+    100% { opacity: 1.0};
+}

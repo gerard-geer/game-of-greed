@@ -1,8 +1,35 @@
-<div class='gp-container'>
-    <div class="gp-item">
-        <greed-board [board]="player.board"></greed-board>
+<div class='gp-container'
+[ngClass]="{'fade-in-element': fadeIn}">
+    <greed-board [board]="player.board"></greed-board>
+    <div class="gp-display">
+        <greed-scoreboard class="gp-display-element" [scoreboard]="player.scoreboard"></greed-scoreboard>
+        <greed-hint-engine class="gp-display-element" [player]="player"></greed-hint-engine>
+        <greed-button id="quitButton" class="gp-display-element" (click)="toggleQuitDialog()">Return to menu</greed-button>
     </div>
-    <div class="gp-item">
-        <greed-scoreboard [scoreboard]="player.scoreboard"></greed-scoreboard>
+    <div class="gp-dialog-container"
+         *ngIf="showQuitDialog">
+        <div class="gp-dialog-wrapper">
+            <div class="gp-dialog">
+                Are you sure you want to quit?
+                <div class="gp-quit-buttons">
+                    <greed-button (click)="triggerGameOver()">Yes</greed-button>
+                    <greed-button (click)="toggleQuitDialog()">No</greed-button>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="gp-dialog-container"
+         *ngIf="player.gameover">
+         <div class="gp-dialog-wrapper">
+            <div class="gp-dialog">
+                <div class="gp-dialog-title">GAME OVER</div>
+                <div class="gp-gameover-component">Score: {{player.scoreboard.score}}</div>
+                <div class="gp-gameover-component">Board completion: {{ (player.scoreboard.curCount/player.scoreboard.maxCount) * 100 | number:'1.3-3' }}%</div>
+                <div class="gp-gameover-component">Moves taken: {{player.scoreboard.numMoves}}</div>
+                <div class="gp-gameover-buttons">
+                    <greed-button (click)="emitStateChangeRequest()">Return to title screen</greed-button>
+                </div>
+            </div>
+        </div>
+        </div>
 </div>
