@@ -10,7 +10,7 @@ import { TitleScreenComponent } from './components/title-screen/title-screen.com
 })
 export class AppComponent implements AfterViewInit{
   title = 'greed-app';
-  state = GameState.GAMEPLAY;
+  state = GameState.MAIN_SCREEN;
 
   constructor() {}
 
