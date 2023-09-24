@@ -9,6 +9,7 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
 import { GreedPlayerComponent } from './components/greed-player/greed-player.component';
 import { TitleScreenComponent } from './components/title-screen/title-screen.component';
 import { ButtonComponent } from './components/button/button.component';
+import { HintEngineComponent } from './components/hint-engine/hint-engine.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ButtonComponent } from './components/button/button.component';
     ScoreboardComponent,
     GreedPlayerComponent,
     TitleScreenComponent,
-    ButtonComponent
+    ButtonComponent,
+    HintEngineComponent
   ],
   imports: [
     BrowserModule,

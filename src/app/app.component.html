@@ -1,1 +1,3 @@
-<greed-title-screen></greed-title-screen>
+<greed-title-screen *ngIf="state==1" (onBeginGame)="startGame()"></greed-title-screen>
+<greed-player [hidden]="state==1"
+              (onStateChange)="returnToTitle()"></greed-player>
