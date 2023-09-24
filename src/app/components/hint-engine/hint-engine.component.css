@@ -1,0 +1,10 @@
+.he-wrapper {
+    flex: 1 1 0;
+    color: #fff !important;
+    font-family: monospace;
+    text-align: center;
+}
+.he-hint {
+    text-align: center;
+    color: #fff;
+}

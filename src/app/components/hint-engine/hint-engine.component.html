@@ -1,0 +1,27 @@
+<div class="he-wrapper">
+    <ng-container *ngIf="showDirectHint; then directHint; else statusHint"></ng-container>
+    <ng-template #directHint class="he-hint">{{directHintText}}</ng-template>
+    <ng-template #statusHint>
+        <ng-container *ngIf="player.scoreboard.lastMove != null; then responsiveHint; else startHint"></ng-container>
+        <ng-template #responsiveHint class="he-hint">
+            <div *ngIf="player.scoreboard.lastMove.result==1">
+                <div *ngIf="player.scoreboard.lastMove.score==1">
+                    Great Move! You scored {{player.scoreboard.lastMove.score}} point and cleared {{player.scoreboard.lastMove.count}} cell!
+                </div>
+                <div *ngIf="player.scoreboard.lastMove.score >1">
+                    Great Move! You scored {{player.scoreboard.lastMove.score}} points and cleared {{player.scoreboard.lastMove.count}} cells!
+                </div>
+            </div>
+            <div *ngIf="player.scoreboard.lastMove.result==2">
+                Oops! That move would have taken you out of bounds.
+            </div>
+            <div *ngIf="player.scoreboard.lastMove.result==3">
+                Oops! That move doesn't work. You cross an empty cell.
+            </div>
+        </ng-template>
+        <ng-template #startHint class="he-hint">
+            Make a move using Q, W, E, A, S, D, Z, or C.
+        </ng-template>
+    </ng-template>
+    
+</div>
