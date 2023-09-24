@@ -8,25 +8,4 @@
     <div class="sb-moves">
         Moves taken: {{sb.numMoves}}
     </div>
-    <div class="sb-hint"
-         *ngIf="sb.lastMove != null">
-        <div *ngIf="sb.lastMove.result==1">
-            <div *ngIf="sb.lastMove.score==1">
-                Great Move! You scored {{sb.lastMove.score}} point and cleared {{sb.lastMove.count}} cell!
-            </div>
-            <div *ngIf="sb.lastMove.score >1">
-                Great Move! You scored {{sb.lastMove.score}} points and cleared {{sb.lastMove.count}} cells!
-            </div>
-        </div>
-        <div *ngIf="sb.lastMove.result==2">
-            Oops! That move would have taken you out of bounds.
-        </div>
-        <div *ngIf="sb.lastMove.result==3">
-            Oops! That move doesn't work. You cross an empty cell.
-        </div>
-    </div>
-    <div class="sb-hint"
-         *ngIf="sb.lastMove == null">
-        Make a move using Q, W, E, A, S, D, Z, or C.
-    </div>
 </div>
