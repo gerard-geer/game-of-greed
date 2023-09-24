@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="ts-menu">
-            <greed-button class="ts-button"><div class="ts-button-text" id="begin">Begin</div></greed-button>
+            <greed-button class="ts-button" (click)="emitGameStartEvent()"><div class="ts-button-text" id="begin">Begin</div></greed-button>
             <greed-button class="ts-button" (click)="toggleHelpDialog()"><div class="ts-button-text" id="howtoplay">How to play</div></greed-button>
         </div>
         <div *ngIf="showHelpDialog" class="ts-help">
@@ -34,3 +34,4 @@
 
     </div>
 </div>
+<div class="ts-shutter" *ngIf="fadeOut" [ngClass]="{'fade-out-element': fadeOut}"></div>

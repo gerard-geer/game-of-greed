@@ -5,6 +5,10 @@
     font-family: "Lucida Console", "Courier New", monospace;
 }
 
+.fade-out-element {
+  animation: fade-out 3.0s;
+}
+
 .ts-bg-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -120,6 +124,16 @@
   .ts-helptext {
     margin-bottom: .1rem;
   }
+
+  .ts-shutter {
+    position: absolute;
+    top: 0px;
+    width: 99%;
+    height: 99%;
+    background-color: #111;
+    opacity: 1.0;
+    animation-fill-mode: both;  
+  }
   
   /* The typing effect */
   @keyframes typing {
@@ -139,6 +153,11 @@
   }
 
   @keyframes fade-in-background {
+    0% { opacity: 0.0};
+    100% { opacity: 1.0};
+  }
+
+  @keyframes fade-out {
     0% { opacity: 0.0};
     100% { opacity: 1.0};
   }

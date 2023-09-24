@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Board } from '../../models/board';
-import { pickColor, randomNumberRange } from '../../models/common';
+import { pickColor, randomNumberRange, GameState } from '../../models/common';
 
 @Component({
   selector: 'greed-title-screen',
@@ -11,11 +11,12 @@ import { pickColor, randomNumberRange } from '../../models/common';
 
 export class TitleScreenComponent implements OnInit{
 
-  @Output() onBeginGame = new EventEmitter<string>();
+  @Output() onBeginGame = new EventEmitter<GameState>();
 
   bgNumbers: any;
   numBG = 1840;
   showHelpDialog = false;
+  fadeOut = false
   constructor() {
     this.bgNumbers = [];
     for ( let i = 0; i < this.numBG; ++i )
@@ -55,6 +56,12 @@ export class TitleScreenComponent implements OnInit{
   }
   closeHelpDialog() {
     this.showHelpDialog = false;
+  }
+
+  emitGameStartEvent() {
+    if (this.fadeOut) return;
+    this.fadeOut = true;
+    setTimeout(()=>{ this.onBeginGame.emit(GameState.GAMEPLAY), this.fadeOut = false; }, 3000);
   }
 }
 
