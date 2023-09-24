@@ -33,7 +33,6 @@ export class Board {
         this.cursorY = 0;randomNumberRange(0,height);
     
         // Go to that cell and set as the cursor.
-        console.log("Setting cursor to",this.cursorX,",",this.cursorY);
         this.cells[this.cursorY][this.cursorX].setAsCursor();
     }
 
@@ -108,7 +107,6 @@ export class Board {
 
         // Do move checks.
         let validity = this.checkMoveValidity(d);
-        console.log("validity",validity)
         if ( validity != MoveValidity.VALID ) return new MoveResult(validity,0,0);
 
         // Oh boy, looks like we can make the move!
@@ -120,7 +118,6 @@ export class Board {
         dirSampleX = this.cursorX + dx;
         dirSampleY = this.cursorY + dy;
         dist = this.cells[dirSampleY][dirSampleX].value;
-        console.log("Distance",dist);
 
         let move = new MoveResult(MoveValidity.VALID,0,0); // Accumulate move results in the instance we're returning
         let curX = this.cursorX;                        // Current cell location along our jogging route.

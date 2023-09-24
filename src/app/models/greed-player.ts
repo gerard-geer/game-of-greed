@@ -5,8 +5,8 @@ import { ScoreBoard } from './scoreboard';
 
 export class GreedPlayer {
 
-    board: any;
-    scoreboard: any;
+    board!: any;
+    scoreboard!: any;
     gameover: boolean;
 
     constructor() {
