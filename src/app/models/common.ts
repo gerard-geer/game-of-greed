@@ -1,8 +1,13 @@
 
 /**
- * Color packs!
+ * Color palettes!
  */
-let original_colorpack = ["white","peru","crimson","green","navy","darkorchid","gold","salmon","chartreuse","aqua"];
+let original_palette = ["white","peru","crimson","green","navy","darkorchid","gold","salmon","chartreuse","aqua"];
+let monochrome_palette = ["white"];
+let palettes = {"original":original_palette,
+                'monochrome':monochrome_palette};
+
+
 
 /**
  * Current game state.
@@ -63,7 +68,7 @@ export function randomIntRange(min: number, max: number) {
  * @returns The CSS color descriptor for that value.
  */
 export function pickColor(value: number) {
-    let colorpack = original_colorpack;
-    value %= colorpack.length;
-    return colorpack[value];
+    let palette = palettes['original'];
+    value %= palette.length;
+    return palette[value];
 }
