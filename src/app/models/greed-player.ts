@@ -27,8 +27,8 @@ export class GreedPlayer {
      * objects.
      */
     constructor() {
-        // this.board = new Board(68,21);  // TODO: can optimize memory usage by not instantiating dummy instances.
-        // this.scoreboard = new ScoreBoard(this.board);
+        this.board = new Board(1,1);  // TODO: can optimize memory usage by not instantiating dummy instances.
+        this.scoreboard = new ScoreBoard(this.board);
         this.gameover = true;
     }
 
