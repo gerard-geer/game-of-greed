@@ -1,14 +1,29 @@
 
+/**
+ * Color packs!
+ */
+let original_colorpack = ["white","peru","crimson","green","navy","darkorchid","gold","salmon","chartreuse","aqua"];
+
+/**
+ * Current game state.
+ */
 export enum GameState {
     MAIN_SCREEN = 1,
     GAMEPLAY = 2
 }
+
+/**
+ * Move validity / error codes.
+ */
 export enum MoveValidity {
     VALID = 1,
     INVALID_OOB = 2,
     INVALID_EMPTY_SPACE = 3
 }
 
+/**
+ * Directions, powers of 2 just in case I want to do some nasty button combo optimizations.
+ */
 export enum Direction {
   N = 1,
   S = 2,
@@ -20,6 +35,9 @@ export enum Direction {
   SE = 128
 }
 
+/**
+ * The result of a move. Contains move validity, points earned and spots cleared.
+ */
 export class MoveResult {
     result: MoveValidity;
     score:  number;
@@ -29,21 +47,23 @@ export class MoveResult {
     }
 }
 
-export function randomNumberRange(min: number, max: number) {
+/**
+ * Returns a random integer in the range [min - max).
+ * @param min Minimum value that can be returned.
+ * @param max Max value to return, not inclusive.
+ * @returns An integer in the range specified.
+ */
+export function randomIntRange(min: number, max: number) {
     return min + Math.floor(Math.random()*(max-min));
 }
 
+/**
+ * Picks a color for a cell, given its value, based on the current color pack.
+ * @param value The value of the cell to color.
+ * @returns The CSS color descriptor for that value.
+ */
 export function pickColor(value: number) {
-    switch(value) {
-        case 1: return "peru";
-        case 2: return "crimson";
-        case 3: return "green";
-        case 4: return "navy";
-        case 5: return "darkorchid";
-        case 6: return "gold";
-        case 7: return "salmon";
-        case 8: return "chartreuse";
-        case 9: return "aqua";
-        default: return "white";
-    }
+    let colorpack = original_colorpack;
+    value %= colorpack.length;
+    return colorpack[value];
 }

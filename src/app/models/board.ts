@@ -1,16 +1,32 @@
-import { randomNumberRange, MoveValidity, MoveResult, Direction } from './common';
+import { randomIntRange, MoveValidity, MoveResult, Direction } from './common';
 import { BoardCell } from './board-cell'; 
 
 
 
 export class Board {
 
+    /**
+     * Boardcells that make up the contents of the game board.
+     */
     cells:   BoardCell[][] = [];
+
+    /**
+     * Cursor indices into that 2D array.
+     */
     cursorX: number;
     cursorY: number;
+
+    /**
+     * Memoized dimensions of said array.
+     */
     width:   number;
     height:  number;
   
+    /**
+     * Constructor.
+     * @param width Width of the new game board.
+     * @param height Height of the new game board.
+     */
     constructor(width: number, height: number) {
 
         // Cache our width and height.
@@ -29,13 +45,18 @@ export class Board {
     
         // Pick a random position (x,y) less than (width,height) as our
         // starting cursor position.
-        this.cursorX = 0;randomNumberRange(0,width);
-        this.cursorY = 0;randomNumberRange(0,height);
+        this.cursorX = randomIntRange(0,width);
+        this.cursorY = randomIntRange(0,height);
     
         // Go to that cell and set as the cursor.
         this.cells[this.cursorY][this.cursorX].setAsCursor();
     }
 
+    /**
+     * Checks to see if a move in a given direction is valid, without side-effects.
+     * @param d The Direction to move.
+     * @returns A MoveValidity that describes the results of the test.
+     */
     checkMoveValidity(d: Direction) : MoveValidity {
         
         let dirSampleX = 0, dirSampleY = 0; // Coordinates of the cell containing our jog distance
@@ -89,6 +110,11 @@ export class Board {
         return MoveValidity.VALID;
     }
 
+    /**
+     * Jogs the cursor in a given direction, if possible.
+     * @param d The direction to move.
+     * @returns A MoveResult instance describing the results of the move.
+     */
     jogCursor(d: Direction) : MoveResult {
 
         let dx = 0, dy = 0;                 // Our unit direction vector.
