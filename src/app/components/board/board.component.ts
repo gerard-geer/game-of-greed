@@ -8,6 +8,9 @@ import { Board } from '../../models/board';
 })
 export class BoardComponent implements OnInit{
 
+  /**
+   * The board for this view to represent.
+   */
   @Input("board")board: any;
 
   constructor() {
