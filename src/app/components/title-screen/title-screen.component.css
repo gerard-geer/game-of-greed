@@ -97,12 +97,6 @@
     animation-fill-mode: both;
     animation-delay: 1.25s;
   }
-  #begin {
-    /* animation-delay: 2.0s; */
-  }
-  #howtoplay {
-    /* animation-delay: 2.667s; */
-  }
   #closehelptext {
     animation: none;
     animation-delay: 0s;
