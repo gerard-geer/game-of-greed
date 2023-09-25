@@ -9,22 +9,53 @@ import { Direction, MoveResult, MoveValidity } from 'src/app/models/common';
 })
 export class HintEngineComponent implements OnInit{
 
+  /**
+   * Whether or not to show a direct hint as to what can be done.
+   */
   showDirectHint: boolean = false;
+
+  /**
+   * The text of the direct hint, programmatically generated.
+   */
   directHintText: string = "Hey buddy you doing okay?";
+
+  /**
+   * A differ keeping track of whether or not the board state has changed.
+   * This is how the "do we show the direct hint" timer is managed.
+   */
   boardDiffer: any;
+
+  /**
+   * A timer counting down from when the last move (board state change) occurred to 
+   * when we pull up the direct hint.
+   */
   hintTimer: any;
 
+  /**
+   * The player object.
+   */
   @Input('player') player!: GreedPlayer;
-  @Input('mostRecentMove') mostRecentMove!: MoveResult;
 
+  /**
+   * Constructor.
+   * @param differs The KV differ used to track the board. This punk means that the board always needs to exist. 
+   */
   constructor(private differs: KeyValueDiffers) {
   }
 
+  /**
+   * Lifecycle hook. 
+   */
   ngOnInit() {
+    // Generates initial hint text.
     this.generateHintText();
-    this.boardDiffer = this.differs.find(this.player.board).create();
+    // Creates the board difffer.
+    this.boardDiffer = this.differs.find(this.player.board).create(); // Should move this to a game start thing.
   }
 
+  /**
+   * Programmatically generates hint text based on the remaining available moves.
+   */
   generateHintText() {
     
     let validMoves = [];
@@ -47,20 +78,32 @@ export class HintEngineComponent implements OnInit{
     }
 
   }
+
+  /**
+   * Creates the timer for displaying the direct hint.
+   */
   scheduleDirectHint() {
     this.hintTimer = setTimeout(()=>{this.showDirectHint=true}, 10000);
   }
+
+  /**
+   * Cancels the direct hint timer.
+   */
   cancelDirectHint() {
     this.showDirectHint = false;
   }
 
-
+  /**
+   * Angular lifecycle hook. Occurs when a change is detected on the player board.
+   * @returns 
+   */
   ngDoCheck(): void {
+    if (!this.player.board) return;
     let changes = this.boardDiffer.diff(this.player.board);
     if(changes) {
-      this.cancelDirectHint();
-      this.generateHintText();
-      this.scheduleDirectHint();
+      this.cancelDirectHint(); // Cancel stale hint.
+      this.generateHintText(); // Generate hint based on new state.
+      this.scheduleDirectHint(); // Schedule it.
     }
   }
 
