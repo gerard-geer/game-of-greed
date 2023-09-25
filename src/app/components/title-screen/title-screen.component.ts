@@ -30,7 +30,7 @@ export class TitleScreenComponent implements OnInit{
   }
 
   animateBG() {
-    let i = randomNumberRange(0,this.numBG-100);
+    let i = randomNumberRange(0,this.numBG-100); // Memoize a second source of random and reduce random() calls.
     this.bgNumbers[i].randomize();
     this.bgNumbers[i+5].randomize();
     this.bgNumbers[i+10].randomize();

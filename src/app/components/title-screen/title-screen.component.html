@@ -2,7 +2,7 @@
     <div class="ts-bg-wrapper">
         <div *ngFor="let num of bgNumbers"
         class="ts-bgnum"
-        [ngStyle]="{'color':num.col}">{{num.val}}</div>
+        [ngStyle]="{'color':num.col, 'text-shadow':'0 0 30px '+num.col}">{{num.val}}</div>
     </div>
     <div class="ts-menu-wrapper">
         <div class="ts-card-wrapper">
