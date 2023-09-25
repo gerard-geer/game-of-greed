@@ -10,12 +10,22 @@ import { MoveValidity, MoveResult } from '../../models/common'
 })
 export class ScoreboardComponent implements OnInit {
 
+  /**
+   * The scoreboard model to wrap this view around.
+   */
   @Input("scoreboard") sb: any;
 
+  /**
+   * Constructor.
+   */
   constructor() {}
 
+  /**
+   * Angular lifecycle hook.
+   */
   ngOnInit() {
-    if (this.sb == null) this.sb = new ScoreBoard(new Board(68,21));
-    //this.sb.submitMove(new MoveResult(MoveValidity.INVALID_OOB,0,0));
+    // Create a scoreboard instance just in case there isn't one yet so references
+    // in the dom aren't broken.
+    if (this.sb == null) this.sb = new ScoreBoard(new Board(1,1));
   }
 }
