@@ -27,8 +27,5 @@ export class AppComponent implements AfterViewInit{
   }
 
   ngAfterViewInit() {
-    console.log("after view init");
-    console.log("player",this.player);
-    console.log("main-screen",this.titleScreen);
   }
 }
